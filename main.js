@@ -65,6 +65,8 @@ function pressNumber(number) {
         displayValue = [];
         displayValue.push(number.textContent);
         return displayNumber(displayValue);
+    } else if (displayValue.includes('.')) {  // avoid entering multiple dots
+        return displayNumber(displayValue);
     } else if (displayValue.length < 9) {  // limited to 9 digit input
         displayValue.push(number.textContent);
         return displayNumber(displayValue);
