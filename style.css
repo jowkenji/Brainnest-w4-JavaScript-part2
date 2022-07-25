@@ -12,6 +12,7 @@ main {
     min-width: 400px;
     width: 400px;
     height: 450px;
+    border-radius: 10px;
 }
 
 .display {
@@ -19,7 +20,7 @@ main {
     background-color: rgb(174, 217, 235);
     margin: 20px;
     padding: 5px;
-    font-size: 72px;
+    font-size: 70px;
     color: rgb(77, 79, 82);
     justify-content: flex-end;
     border: 3px solid rgb(92, 91, 91);
@@ -53,6 +54,10 @@ main {
     border: 1px solid black;
     flex-grow: 1;
     width: 75px;
+}
+
+button:active {
+    background-color: rgb(150, 150, 150);
 }
 
 .clear {

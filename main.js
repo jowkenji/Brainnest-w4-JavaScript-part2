@@ -47,9 +47,9 @@ function displayResult(resultado) {
     } else if (resultadoStr.length > 9) {     // limit big number results
         let tamanho = resultadoStr.length - 5;
         if (tamanho < 9) {
-            display.textContent = `${resultadoStr.slice(0, 5)}.10e${tamanho}`;
+            display.textContent = `${resultadoStr.slice(0, 8)}e${tamanho}`;
         } else {
-            display.textContent = `${resultadoStr.slice(0, 4)}.10e${tamanho}`;
+            display.textContent = `${resultadoStr.slice(0, 7)}e${tamanho}`;
         }
     } else {
         display.textContent = resultado;
@@ -61,11 +61,11 @@ function displayResult(resultado) {
 
 function pressNumber(number) { 
     // Reads the entered number, store it in an array and display the value.
-    if(displayValue[0] == 0) {  // ignore the first digit '0'
+    if(displayValue[0] == 0) {  // ignore the first digit as '0'
         displayValue = [];
         displayValue.push(number.textContent);
         return displayNumber(displayValue);
-    } else if (displayValue.includes('.')) {  // avoid entering multiple dots
+    } else if (number.textContent == '.' && displayValue.includes('.')) {  // avoid entering multiple dots
         return displayNumber(displayValue);
     } else if (displayValue.length < 9) {  // limited to 9 digit input
         displayValue.push(number.textContent);
@@ -76,11 +76,13 @@ function pressNumber(number) {
 function pressNumberKey(number) { 
     // Reads the entered number by keyboard, store it in an array and display the value.
     // Similar function except: push no textContent
-    if(displayValue[0] == 0) {  // ignore the first digit '0'
+    if(displayValue[0] == 0) {  // ignore the first digit as '0'
         displayValue = [];
         displayValue.push(number);
         return displayNumber(displayValue);
-    } else if (displayValue.length < 9) {  // limited to 9 digit input
+    } else if (number == '.' && displayValue.includes('.')) {  // avoid entering multiple dots
+        return displayNumber(displayValue);
+    }else if (displayValue.length < 9) {  // limited to 9 digit input
         displayValue.push(number);
         return displayNumber(displayValue);
     }
